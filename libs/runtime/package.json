@@ -2,6 +2,9 @@
   "name": "@telia-ace/widget-runtime-flamingo",
   "version": "0.0.1",
   "private": "false",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@telia-ace/widget-services": "^1.0.27",
     "@telia-ace/widget-utilities": "^1.0.16",
