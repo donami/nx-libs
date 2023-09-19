@@ -79,5 +79,5 @@ try {
 }
 
 // Execute "npm publish" to publish
-execSync(`npm publish --access public`);
+execSync(`npm publish`);
 // execSync(`npm publish --access public --tag ${tag}`);
