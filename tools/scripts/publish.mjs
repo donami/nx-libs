@@ -58,6 +58,10 @@ try {
 try {
   const file = readFileSync(`.npmrc`).toString();
   console.log('xxx', file);
+  copyFileSync('.npmrc', `${outputPath}/.npmrc`);
+
+  const file2 = readFileSync(`.npmrc`).toString();
+  console.log('xxx2', file2);
 } catch (error) {
   console.log('UNABLE TO READ FILE');
   console.log('ERROR*,', error);
