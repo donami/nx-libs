@@ -1,7 +1,6 @@
 {
   "name": "@telia-ace/knowledge-widget-bot-provider-flamingo",
   "version": "0.0.1",
-  "private": "false",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },

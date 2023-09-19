@@ -1,6 +1,5 @@
 {
   "name": "lib-b",
-  "private": "false",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
