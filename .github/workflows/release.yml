@@ -36,6 +36,11 @@ jobs:
       #     npx nx affected --target test --parallel 3 --ci --code-coverage
       #     npx nx run-many --target build
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "ci@widgets.teliacompany.com"
+          git config --global user.name "CI"
+
       - name: 'Bump version'
         run: node ./bump-version.mjs
         shell: bash
