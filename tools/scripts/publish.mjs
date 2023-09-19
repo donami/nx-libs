@@ -78,5 +78,6 @@ try {
   console.error(`Error reading package.json file from library build output.`);
 }
 
-// // Execute "npm publish" to publish
+// Execute "npm publish" to publish
+execSync(`npm publish --access public`);
 // execSync(`npm publish --access public --tag ${tag}`);
