@@ -45,16 +45,26 @@ invariant(
   `Could not find "build.options.outputPath" of project "${name}". Is project.json configured  correctly?`
 );
 
+console.log('vvv', version);
 process.chdir(outputPath);
 
 // Updating the version in "package.json" before publishing
 try {
   const json = JSON.parse(readFileSync(`package.json`).toString());
   json.version = version;
+
+  if (json.dependencies) {
+    Object.entries(json.dependencies).forEach(([key, value]) => {
+      if (value === '*') {
+        json.dependencies[key] = `^${version}`;
+      }
+    });
+  }
+
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
 } catch (e) {
   console.error(`Error reading package.json file from library build output.`);
 }
 
-// Execute "npm publish" to publish
-execSync(`npm publish --access public --tag ${tag}`);
+// // Execute "npm publish" to publish
+// execSync(`npm publish --access public --tag ${tag}`);

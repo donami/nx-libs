@@ -1,7 +1,9 @@
 {
   "name": "lib-a",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "lib-b": "*"
+  },
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts"
