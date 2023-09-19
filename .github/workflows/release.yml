@@ -49,6 +49,7 @@ jobs:
         run: |
           git add .
           git commit -m "Release"
+          git push
 
       # - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
       # - run: echo 'VERSION=${{ fromJson(env.VERSION_JSON).version }}' >> $GITHUB_ENV
