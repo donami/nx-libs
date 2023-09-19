@@ -24,9 +24,7 @@
       "@telia-ace/widget-conversation-flamingo": [
         "libs/conversation/src/index.ts"
       ],
-      "@telia-ace/widget-runtime-flamingo": ["libs/runtime/src/index.ts"],
-      "lib-a": ["libs/lib-a/src/index.ts"],
-      "lib-b": ["libs/lib-b/src/index.ts"]
+      "@telia-ace/widget-runtime-flamingo": ["libs/runtime/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
