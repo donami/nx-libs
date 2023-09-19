@@ -39,6 +39,12 @@ jobs:
       - name: 'Bump version'
         run: node ./bump-version.mjs
         shell: bash
+
+      - name: 'Commit changes'
+        run: |
+          git add .
+          git commit -m "Release"
+
       # - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
       # - run: echo 'VERSION=${{ fromJson(env.VERSION_JSON).version }}' >> $GITHUB_ENV
       # - run: echo 'VERSION = ${{env.VERSION}}'
