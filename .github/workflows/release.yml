@@ -25,10 +25,10 @@ jobs:
         with:
           version: 7.30.3
 
-      # - name: Derive appropriate SHAs for base and head for `nx affected` commands
-      #   uses: nrwl/nx-set-shas@v2
-      #   with:
-      #     main-branch-name: ${{ github.base_ref }}
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: ${{ github.base_ref }}
 
       - name: Install Dependencies
         run: pnpm install
