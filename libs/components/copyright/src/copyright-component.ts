@@ -6,7 +6,9 @@ export const CopyrightComponent = (container: Container) => {
     container,
     'copyright',
     import('./copyright'),
-    (_component) => {}
+    (_component) => {
+      //
+    }
   );
 };
 

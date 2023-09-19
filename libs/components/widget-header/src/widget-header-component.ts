@@ -6,7 +6,9 @@ export const WidgetHeaderComponent = (container: Container) => {
     container,
     'widget-header',
     import('./widget-header'),
-    (_component) => {}
+    (_component) => {
+      //
+    }
   );
 };
 

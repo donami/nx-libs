@@ -1,7 +1,11 @@
 {
   "name": "@telia-ace/widget-components-list-flamingo",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@telia-ace/widget-runtime-flamingo": "*",
+    "@webprovisions/platform": "^1.1.3",
+    "lit": "^2.8.0"
+  },
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts"
