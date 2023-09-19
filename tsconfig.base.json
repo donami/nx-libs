@@ -21,6 +21,15 @@
       "@telia-ace/knowledge-widget-bot-provider-flamingo": [
         "libs/bot-provider/src/index.ts"
       ],
+      "@telia-ace/widget-components-copyright-flamingo": [
+        "libs/components/copyright/src/index.ts"
+      ],
+      "@telia-ace/widget-components-list-flamingo": [
+        "libs/components/list/src/index.ts"
+      ],
+      "@telia-ace/widget-components-widget-header-flamingo": [
+        "libs/components/widget-header/src/index.ts"
+      ],
       "@telia-ace/widget-conversation-flamingo": [
         "libs/conversation/src/index.ts"
       ],

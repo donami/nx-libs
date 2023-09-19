@@ -1,0 +1,38 @@
+{
+  "name": "@telia-ace/widget-components-widget-header-flamingo",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/components/widget-header/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/components/widget-header"
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @telia-ace/widget-components-widget-header-flamingo {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/libs/components/widget-header"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/components/widget-header/**/*.ts",
+          "libs/components/widget-header/package.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
