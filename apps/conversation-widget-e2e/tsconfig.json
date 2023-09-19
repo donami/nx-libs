@@ -1,13 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
   "compilerOptions": {
-    "esModuleInterop": true
-  }
+    "sourceMap": false,
+    "outDir": "../../dist/out-tsc",
+    "allowJs": true,
+    "types": ["cypress", "node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"]
 }

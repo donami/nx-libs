@@ -1,15 +1,20 @@
 {
   "name": "conversation-widget-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["conversation-widget"],
+  "sourceRoot": "apps/conversation-widget-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "executor": "@nx/cypress:cypress",
       "options": {
-        "jestConfig": "apps/conversation-widget-e2e/jest.config.ts",
-        "passWithNoTests": true
+        "cypressConfig": "apps/conversation-widget-e2e/cypress.config.ts",
+        "devServerTarget": "conversation-widget:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "conversation-widget:serve:production"
+        }
       }
     },
     "lint": {
@@ -19,5 +24,7 @@
         "lintFilePatterns": ["apps/conversation-widget-e2e/**/*.{js,ts}"]
       }
     }
-  }
+  },
+  "tags": [],
+  "implicitDependencies": ["conversation-widget"]
 }

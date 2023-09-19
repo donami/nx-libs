@@ -1,0 +1,193 @@
+{
+  "data": {
+    "projection": "https://demo.humany.cc/uno-929-bot"
+  },
+  "trigger": {
+    "symbol": {
+      "type": "Telia",
+      "content": "question"
+    },
+    "action": "hide",
+    "openTooltip": "Minimera",
+    "closedTooltip": "Öppna",
+    "ariaLabel": "Kontakt och hjälp"
+  },
+  "layout": [
+    {
+      "breakpoints": ["mobile"],
+      "values": {
+        "type": "inline"
+      }
+    },
+    {
+      "breakpoints": ["tablet", "desktop"],
+      "values": {
+        "type": "floating",
+        "height": "656px",
+        "width": "400px"
+      }
+    }
+  ],
+  "_layout": {
+    "height": "656px",
+    "width": "380px",
+    "position": "fixed"
+  },
+  "entry": "root-area",
+  "components": {
+    "widget-header": {
+      "name": "widget-header",
+      "type": "widget-header",
+      "properties": {
+        "actions": {
+          "minimize": {
+            "position": "right",
+            "size": "20px",
+            "padding": "25px",
+            "order": -1,
+            "tooltip": "Minimize chat"
+          },
+          "avatar": {
+            "position": "left",
+            "size": "34px",
+            "padding": "15px",
+            "symbol": {
+              "type": "Svg",
+              "content": "chat"
+            }
+          }
+        },
+        "textAlign": "left",
+        "css-height": "85px",
+        "header": "Travello the travel bot",
+        "tagline": "Here to guide you!",
+        "tooltip": "Back to start"
+      },
+      "context": {
+        "colors": {
+          "text": "#FFFFFF"
+        },
+        "accessibility": {
+          "border": "2px dashed #FFFFFF",
+          "colors": {
+            "inactiveText": "#FFFFFF"
+          }
+        }
+      },
+      "children": [],
+      "layout": {}
+    },
+    "conversation": {
+      "name": "conversation",
+      "type": "conversation",
+      "properties": {
+        "inputHidden": false,
+        "inputDisabled": false,
+        "multilineForm": false,
+        "inputPlaceholder": "Type your message here...",
+        "sendButtonLabel": "Send message",
+        "userLabel": "Me",
+        "providers": ["ace-knowledge-bot"],
+        "knowledgeBotEndpoint": "",
+        "secondaryAction": {
+          "action": "help",
+          "label": "Browse the knowledgebase",
+          "icon": "browse"
+        }
+      },
+      "context": {
+        "fonts": {
+          "small": "0.9em"
+        },
+        "colors": {
+          "accent": "#FFF"
+        },
+        "inputBorder": "1px solid #EFEFEF"
+      },
+      "children": [],
+      "layout": {},
+      "plugins": ["971"]
+    },
+    "main-area": {
+      "name": "main-area",
+      "type": "area",
+      "properties": {
+        "css-overflow-y": "auto",
+        "css-position": "relative",
+        "css-height": "100%",
+        "css-flex": 1
+      },
+      "context": {
+        "gap": "25px",
+        "border": "1px solid #E7E7E7",
+        "borderRadius": "5px"
+      },
+      "children": ["conversation"],
+      "layout": {
+        "size": "full"
+      }
+    },
+    "copyright": {
+      "name": "copyright",
+      "type": "copyright",
+      "properties": {
+        "mode": "compact",
+        "css-background-color": "#FFFFFF",
+        "css-box-shadow": "1px 0px 10px rgba(0, 0, 0, 0.1)",
+        "css-z-index": 6
+      },
+      "context": {},
+      "children": [],
+      "layout": {}
+    },
+    "root-area": {
+      "name": "root-area",
+      "type": "area",
+      "properties": {
+        "role": "contentinfo",
+        "css-box-shadow": "rgba(0, 0, 0, 0.16) 0px 5px 40px",
+        "css-grid-template-rows": "85px 1fr auto"
+      },
+      "context": {
+        "cardinal": 3,
+        "fonts": {
+          "type": "Lato",
+          "huge": "1.25em",
+          "medium": "1.1em",
+          "large": "1.1em"
+        },
+        "colors": {
+          "accent": "#FAFAFA",
+          "link": "#990AE3",
+          "primary": "#29003e",
+          "warning": "#CC0000",
+          "text": "#333333",
+          "textLight": "#767676"
+        },
+        "accessibility": {
+          "border": "2px dashed #990AE3",
+          "colors": {
+            "inactiveText": "#990AE3",
+            "activeText": "#FFFFFF"
+          }
+        },
+        "inputBorder": "1px solid #000000"
+      },
+      "children": ["widget-header", "main-area", "copyright"],
+      "layout": {
+        "size": "full"
+      }
+    }
+  },
+  "views": [],
+  "breakpoints": {
+    "desktop": "screen and (min-width: 1200px)",
+    "tablet": "screen and (max-width: 1199px) and (min-width: 768px)",
+    "mobile": "screen and (max-width: 767px)"
+  },
+  "language": "sv",
+  "routing": {
+    "initialPath": "/",
+    "mode": "scopedHash"
+  }
+}

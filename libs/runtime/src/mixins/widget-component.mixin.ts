@@ -156,6 +156,10 @@ export const WidgetComponent = <T extends Constructor<LitElement>>(
               const resolver: ComponentResolver =
                 await this.container!.getAsync('componentResolver');
 
+              if (this.descriptor?.type === 'area') {
+                return;
+              }
+
               const componentResolver = resolver.getComponent(
                 this.descriptor?.type || ''
               );

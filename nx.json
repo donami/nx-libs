@@ -30,6 +30,9 @@
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
       ]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
@@ -45,5 +48,13 @@
       "!{projectRoot}/test-setup.[jt]s"
     ],
     "sharedGlobals": []
+  },
+  "generators": {
+    "@nx/web:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "vitest",
+      "e2eTestRunner": "cypress"
+    }
   }
 }
