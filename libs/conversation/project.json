@@ -1,0 +1,38 @@
+{
+  "name": "@telia-ace/widget-conversation-flamingo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/conversation/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/conversation"
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @telia-ace/widget-conversation-flamingo {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/conversation"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/conversation/**/*.ts",
+          "libs/conversation/package.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

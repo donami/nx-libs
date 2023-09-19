@@ -31,5 +31,6 @@
   },
   "nx": {
     "includedScripts": []
-  }
+  },
+  "dependencies": {}
 }
