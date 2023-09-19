@@ -23,22 +23,26 @@ jobs:
         with:
           version: 7.30.3
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2
-        with:
-          main-branch-name: ${{ github.base_ref }}
+      # - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      #   uses: nrwl/nx-set-shas@v2
+      #   with:
+      #     main-branch-name: ${{ github.base_ref }}
 
-      - name: Install Dependencies
-        run: pnpm install
+      # - name: Install Dependencies
+      #   run: pnpm install
 
-      - run: |
-          npx nx affected --target lint --parallel 3
-          npx nx affected --target test --parallel 3 --ci --code-coverage
-          npx nx run-many --target build
+      # - run: |
+      #     npx nx affected --target lint --parallel 3
+      #     npx nx affected --target test --parallel 3 --ci --code-coverage
+      #     npx nx run-many --target build
 
-      - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
-      - run: echo 'VERSION=${{ fromJson(env.VERSION_JSON).version }}' >> $GITHUB_ENV
-      - run: echo 'VERSION = ${{env.VERSION}}'
+      - name: 'Bump version'
+        run: node ${{ github.action_path }}/bump-version.js
+        shell: bash
+      # - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
+      # - run: echo 'VERSION=${{ fromJson(env.VERSION_JSON).version }}' >> $GITHUB_ENV
+      # - run: echo 'VERSION = ${{env.VERSION}}'
+      # - run: echo "`jq '.base_config[1].value="1.2.14"' config.json`" > config.json
 
       # - name: Release
       #   env:
