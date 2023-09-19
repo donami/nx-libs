@@ -40,6 +40,11 @@ jobs:
           git config --global user.email "ci@widgets.teliacompany.com"
           git config --global user.name "CI"
 
+      - name: 🔑 Authenticate with NPM
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ~/.npmrc
+          echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ${{ github.workspace }}/.npmrc
+
       - name: 'Bump version'
         run: node ./bump-version.mjs
         shell: bash
