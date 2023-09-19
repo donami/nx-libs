@@ -40,7 +40,6 @@ invariant(
 );
 
 let newVersion = '';
-
 try {
   const json = JSON.parse(readFileSync(`version.json`).toString());
   newVersion = json.version;
@@ -55,19 +54,17 @@ try {
   console.error(`Could not determine which version to publish!`);
 }
 
-try {
-  const file = readFileSync(`.npmrc`).toString();
-  console.log('xxx', file);
-  copyFileSync('.npmrc', `${outputPath}/.npmrc`);
+// try {
+//   const file = readFileSync(`.npmrc`).toString();
+//   console.log('xxx', file);
+//   copyFileSync('.npmrc', `${outputPath}/.npmrc`);
 
-  const file2 = readFileSync(`.npmrc`).toString();
-  console.log('xxx2', file2);
-} catch (error) {
-  console.log('UNABLE TO READ FILE');
-  console.log('ERROR*,', error);
-}
+//   const file2 = readFileSync(`.npmrc`).toString();
+//   console.log('xxx2', file2);
+// } catch (error) {
+//   console.log(`Unable to read .npmrc`, error);
+// }
 
-// console.log('vvv', version);
 process.chdir(outputPath);
 
 // Updating the version in "package.json" before publishing
@@ -84,13 +81,9 @@ try {
   }
 
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
-
-  console.log(JSON.stringify(json, null, 2));
 } catch (e) {
   console.error(`Error reading package.json file from library build output.`);
 }
 
 // Execute "npm publish" to publish
-
 execSync(`npm publish`);
-// execSync(`npm publish --access public --tag ${tag}`);

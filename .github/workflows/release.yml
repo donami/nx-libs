@@ -29,12 +29,14 @@ jobs:
       #   uses: nrwl/nx-set-shas@v2
       #   with:
       #     main-branch-name: ${{ github.base_ref }}
+
       - name: Install Dependencies
         run: pnpm install
 
-        # npx nx affected --target lint --parallel 3
-        # npx nx affected --target test --parallel 3 --ci --code-coverage
-      - run: |
+      - name: Lint, test and build
+        run: |
+          npx nx affected --target lint --parallel 3
+          npx nx affected --target test --parallel 3 --ci --code-coverage
           npx nx run-many -t build
 
       - name: Configure Git
@@ -63,15 +65,3 @@ jobs:
           git add version.json
           git commit -m "Release"
           git push
-
-      # - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
-      # - run: echo 'VERSION=${{ fromJson(env.VERSION_JSON).version }}' >> $GITHUB_ENV
-      # - run: echo 'VERSION = ${{env.VERSION}}'
-      # - run: echo "`jq '.base_config[1].value="1.2.14"' config.json`" > config.json
-
-      # - name: Release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.GH_TOKEN }}
-      #   run: |
-      #     npx nx run-many --target release
