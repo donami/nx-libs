@@ -28,8 +28,8 @@ jobs:
       #   with:
       #     main-branch-name: ${{ github.base_ref }}
 
-      # - name: Install Dependencies
-      #   run: pnpm install
+      - name: Install Dependencies
+        run: pnpm install
 
       # - run: |
       #     npx nx affected --target lint --parallel 3
