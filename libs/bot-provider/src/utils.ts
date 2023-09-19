@@ -9,7 +9,7 @@ import {
 } from './types';
 import { ConversationMessageListItemType } from '@telia-ace/widget-conversation-flamingo';
 
-type Symbol = {
+type SymbolType = {
   type: 'Uri' | 'Svg' | 'FontAwesome' | 'Text' | string;
   content: string;
 };
@@ -17,7 +17,7 @@ type Symbol = {
 const convertLegacySymbol = (symbol?: {
   type: string;
   content: string;
-}): Symbol | undefined => {
+}): SymbolType | undefined => {
   if (symbol) {
     const { type, content } = symbol;
     if (type && content) {

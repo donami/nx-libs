@@ -12,7 +12,7 @@ import {
   getKnowledgeBotEndpoint,
   setServiceClientParameter,
 } from './utils';
-import { ComponentNodeController } from '@telia-ace/widget-core-flamingo';
+import { ComponentNodeController } from '@telia-ace/widget-core';
 import { ConversationMessageListItemType } from '@telia-ace/widget-conversation-flamingo';
 
 class KnowledgeBotProvider {
@@ -61,8 +61,9 @@ class KnowledgeBotProvider {
         const response = await this.httpClient.showContactMethodAction(data);
 
         if (response) {
-          if (!!data.contactMethod.title)
+          if (data.contactMethod.title) {
             this.printUserMessage(data.contactMethod.title);
+          }
           this.onMessagesReceived(response);
         }
       }

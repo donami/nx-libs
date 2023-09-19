@@ -54,7 +54,7 @@ export const processEntries = async (
       const action = {
         label: i.title,
         actionKey: i.actionKey,
-        symbol: !!i.symbol ? i.symbol : undefined,
+        symbol: i.symbol ? i.symbol : undefined,
         description: i.description || undefined,
       } as ActionItem;
 
@@ -126,7 +126,7 @@ export const processEntries = async (
             );
 
             // entry has related entries
-            if (!!related.length) {
+            if (related.length) {
               const pagingEntry = related.find((e) =>
                 e.tags.includes('paging')
               );
@@ -145,7 +145,7 @@ export const processEntries = async (
                     label: i.title,
                     actionKey: i.actionKey,
                     data: {
-                      groupId: !!prevGroup ? prevGroup.id : group.id,
+                      groupId: prevGroup ? prevGroup.id : group.id,
                     },
                   });
                 });
@@ -217,7 +217,7 @@ export const processEntries = async (
           );
 
           // embedded contact methods
-          if (!!related.length) {
+          if (related.length) {
             const contactMethodListEntry = related.find(
               (e) =>
                 e.type === 'List' &&
@@ -458,8 +458,8 @@ export const processEntries = async (
       // sort the entries based on it's types sort value
       const defaultSortValue = 20;
 
-      var sortValue = sortMap.get(item.type) || defaultSortValue;
-      var sortValueOther = sortMap.get(other.type) || defaultSortValue;
+      const sortValue = sortMap.get(item.type) || defaultSortValue;
+      const sortValueOther = sortMap.get(other.type) || defaultSortValue;
       return sortValue - sortValueOther;
     })
     .filter((entry) => !entry.relation) // remove any "relation entries"
