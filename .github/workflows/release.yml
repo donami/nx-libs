@@ -44,6 +44,7 @@ jobs:
         run: |
           echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ~/.npmrc
           echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ${{ github.workspace }}/.npmrc
+          cat ~/.npmrc
 
       - name: 'Bump version'
         run: node ./bump-version.mjs
@@ -51,11 +52,13 @@ jobs:
 
       - name: 'Release'
         run: |
+          echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ~/.npmrc
+          echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN  }}' > ${{ github.workspace }}/.npmrc
           npx nx run-many -t publish
 
       - name: 'Commit changes'
         run: |
-          git add .
+          git add version.json
           git commit -m "Release"
           git push
 
