@@ -36,6 +36,9 @@ jobs:
           npx nx affected --target test --parallel 3 --ci --code-coverage
           npx nx run-many --target build
 
+      - run: echo "VERSION_JSON=$(jq -c . < version.json)" >> $GITHUB_ENV
+      - run: echo '${{ fromJson(env.VERSION_JSON).version }}'
+
       # - name: Release
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
