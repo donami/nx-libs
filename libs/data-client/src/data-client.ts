@@ -1,5 +1,5 @@
 import { ServiceClient } from '@telia-ace/knowledge-serviceclient';
-import { WidgetRenderState } from '@telia-ace/widget-core-flamingo';
+import { WidgetRenderState } from '@telia-ace/widget-core';
 import {
   deepClone,
   lock,

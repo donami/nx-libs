@@ -1,7 +1,12 @@
 {
   "name": "@telia-ace/knowledge-data-client-flamingo",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@webprovisions/platform": "^1.1.3",
+    "@telia-ace/knowledge-serviceclient": "^1.0.31",
+    "@telia-ace/widget-utilities": "^1.0.16",
+    "@telia-ace/widget-core": "^1.0.27"
+  },
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts"

@@ -41,6 +41,7 @@
     "@telia-ace/widget-core": "^1.0.27",
     "@telia-ace/widget-services": "^1.0.27",
     "@telia-ace/widget-utilities": "^1.0.16",
+    "@telia-ace/knowledge-serviceclient": "^1.0.31",
     "@teliads/components": "^22.1.1",
     "@teliads/icons": "^8.4.0",
     "@webprovisions/bootstrapping": "^1.0.13",
