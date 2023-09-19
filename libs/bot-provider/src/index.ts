@@ -1,1 +1,3 @@
-export * from './lib/knowledge-widget-bot-provider-flamingo';
+import ConversationPlugin from './plugin';
+
+export { ConversationPlugin };
