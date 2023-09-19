@@ -58,7 +58,7 @@ export const prepareDOMElements = async (
   providedWidgetElement?: HTMLElement,
   providedTriggerElement?: HTMLElement,
   triggerDefinition?: any,
-  waitWithReplace: boolean = false
+  waitWithReplace = false
 ): Promise<PrepareDOMElementsOutput> => {
   const providedElements = determineProvidedElements(
     providedWidgetElement,

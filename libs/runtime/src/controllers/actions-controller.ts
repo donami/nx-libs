@@ -8,7 +8,7 @@ import {
   ComponentDescriptor,
   ComponentPlatform,
   ComponentQuery,
-} from '@telia-ace/widget-core-flamingo';
+} from '@telia-ace/widget-core';
 import { uuid } from '@telia-ace/widget-utilities';
 
 export class ActionsController implements ReactiveController {

@@ -1,7 +1,4 @@
-import {
-  ActionResolver,
-  WidgetRenderState,
-} from '@telia-ace/widget-core-flamingo';
+import { ActionResolver, WidgetRenderState } from '@telia-ace/widget-core';
 import { Container } from '@webprovisions/platform';
 
 export const getRenderState = async (container: Container) => {
@@ -18,8 +15,9 @@ export const subscribeToRenderState = async (
 ) => {
   const widget = container.get('$widget');
 
-  const actionResolver: ActionResolver =
-    await container.getAsync('actionResolver');
+  const actionResolver: ActionResolver = await container.getAsync(
+    'actionResolver'
+  );
 
   const unsubscribe = actionResolver.subscribe(widget.name, subscriptionFn);
 

@@ -1,4 +1,4 @@
-import { ComponentNodeController } from '@telia-ace/widget-core-flamingo';
+import { ComponentNodeController } from '@telia-ace/widget-core';
 import { Container } from '@webprovisions/platform';
 
 type DataResource = {
@@ -18,7 +18,7 @@ export const getProvider = async (
     component.properties().provider;
   let providerSettings = {};
 
-  let providerKey: string = '';
+  let providerKey = '';
   if (Array.isArray(providerProperty)) {
     providerKey = providerProperty[0];
     providerSettings = providerProperty[1];
@@ -26,8 +26,9 @@ export const getProvider = async (
     providerKey = providerProperty || '';
   }
 
-  const provider: DataProvider | undefined =
-    await container.getAsync(providerKey);
+  const provider: DataProvider | undefined = await container.getAsync(
+    providerKey
+  );
 
   if (!provider) {
     throw new Error('No provider defined in ListComponent');

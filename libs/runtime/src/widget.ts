@@ -3,7 +3,7 @@ import {
   ComponentPlatform,
   WidgetRenderState,
   WidgetSettings,
-} from '@telia-ace/widget-core-flamingo';
+} from '@telia-ace/widget-core';
 import {
   StorageCategory,
   StorageMedium,
@@ -568,6 +568,7 @@ export default class Widget extends WidgetType {
       case 'close':
       case 'open':
       case 'hide':
+        // eslint-disable-next-line no-case-declarations
         const newState =
           action === 'open'
             ? WidgetRenderState.open
@@ -582,12 +583,11 @@ export default class Widget extends WidgetType {
               ? this.onOpen()
               : this.onClose();
           } else {
-            this.outlets.forEach(
-              (outlet) =>
-                outlet.options.triggerDOMElement?.setAttribute(
-                  'aria-expanded',
-                  'false'
-                )
+            this.outlets.forEach((outlet) =>
+              outlet.options.triggerDOMElement?.setAttribute(
+                'aria-expanded',
+                'false'
+              )
             );
           }
         });
@@ -642,9 +642,8 @@ export default class Widget extends WidgetType {
     //   return router.start();
     // });
 
-    this.outlets.forEach(
-      (outlet) =>
-        outlet.options.triggerDOMElement?.setAttribute('aria-expanded', 'true')
+    this.outlets.forEach((outlet) =>
+      outlet.options.triggerDOMElement?.setAttribute('aria-expanded', 'true')
     );
     return Promise.resolve();
   }
@@ -673,12 +672,11 @@ export default class Widget extends WidgetType {
       .then(
         ({ components: _components }: { components: ComponentPlatform }) => {
           // const visibleNodes = components.nodes.visible;
-          this.outlets.forEach(
-            (outlet) =>
-              outlet.options.triggerDOMElement?.setAttribute(
-                'aria-expanded',
-                'false'
-              )
+          this.outlets.forEach((outlet) =>
+            outlet.options.triggerDOMElement?.setAttribute(
+              'aria-expanded',
+              'false'
+            )
           );
 
           // if (

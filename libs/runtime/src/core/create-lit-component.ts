@@ -3,7 +3,7 @@ import {
   extendComponent,
   ExtendComponentHandler,
   ExtendComponentOptions,
-} from '@telia-ace/widget-core-flamingo';
+} from '@telia-ace/widget-core';
 import { Container } from '@webprovisions/platform';
 
 /**

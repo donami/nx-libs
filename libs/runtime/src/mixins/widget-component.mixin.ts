@@ -15,12 +15,13 @@ import {
   ComponentPlatform,
   ComponentResolver,
   asDescriptor,
-} from '@telia-ace/widget-core-flamingo';
+} from '@telia-ace/widget-core';
 import { descriptorContext } from '../context/component-node.context';
 import { ActionsController } from '../controllers/actions-controller';
 import { mapBranding } from '../ui/branding';
 import { appendStyleFromProperties } from '../ui/get-css-props';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 export declare class WidgetComponentInterface {
@@ -63,7 +64,7 @@ export const WidgetComponent = <T extends Constructor<LitElement>>(
     public container?: Container;
 
     @property()
-    entry: string = '';
+    entry = '';
 
     private _descriptorProvider = new ContextProvider(
       this,

@@ -10,13 +10,13 @@ import { TriggerType } from './prepare-dom';
 
 const MODALS_STORAGE_KEY = 'modals';
 
-type Symbol = {
+type SymbolType = {
   type: 'Uri' | 'Svg' | 'FontAwesome' | 'Text' | string;
   content: string;
 };
 
 export type BadgeOptions = {
-  symbol?: Symbol;
+  symbol?: SymbolType;
   label?: string;
   ariaLabel?: string;
   openTooltip?: string;
@@ -44,10 +44,7 @@ export class ViewOutlet {
   container: Container;
   private unsubscribe: (() => void)[] = [];
 
-  constructor(
-    container: Container,
-    public options: ViewOutletOptions
-  ) {
+  constructor(container: Container, public options: ViewOutletOptions) {
     this.container = container.createChild(this);
     this.container.register('widgetDOMElement', this.options.widgetDOMElement);
     this.container.register(
@@ -103,9 +100,9 @@ export class ViewOutlet {
           this.container,
           MODALS_STORAGE_KEY,
           StorageMedium.Session
-        ).then((modals) => {
+        ).then((modals: any) => {
           if (modals) {
-            modals.forEach((modal) => {
+            modals.forEach((modal: any) => {
               if (
                 widgets.find(
                   (w: Widget) =>

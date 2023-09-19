@@ -6,7 +6,7 @@ type LayoutSettings = {
 export const getLayoutProps = (
   settings: LayoutSettings[],
   activeBreakpoints: string[],
-  hasTrigger: boolean = false
+  hasTrigger = false
 ) => {
   const layoutProps = settings.reduce<Record<string, string>>(
     (acc, { breakpoints = [], values }) => {
@@ -25,12 +25,13 @@ export const getLayoutProps = (
   );
 
   const styles: Record<string, string> = {};
-  let type = layoutProps.type;
+  const type = layoutProps.type;
 
   styles.height = layoutProps.height || '';
   styles.width = layoutProps.width || '';
 
   if (layoutProps.type === 'floating') {
+    //
   } else if (layoutProps.type === 'inline') {
     if (hasTrigger) {
       styles['height'] = 'calc(100vh - 120px)';

@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import { until } from 'lit/directives/until.js';
 import { mapBranding } from './branding';
 import { appendStyleFromProperties } from './get-css-props';
-import { ComponentDescriptor, ComponentResolver } from '@telia-ace/widget-core-flamingo';
+import { ComponentDescriptor, ComponentResolver } from '@telia-ace/widget-core';
 import { WidgetComponent } from '../mixins/widget-component.mixin';
 
 const WidgetElement = WidgetComponent(LitElement);
@@ -25,8 +25,9 @@ export class AreaComponent extends WidgetElement {
   ];
 
   private _resolveChildComponent = async (type: string) => {
-    const resolver: ComponentResolver =
-      await this.container!.getAsync('componentResolver');
+    const resolver: ComponentResolver = await this.container!.getAsync(
+      'componentResolver'
+    );
 
     const componentResolver = resolver.getComponent(type);
     if (componentResolver.then) {

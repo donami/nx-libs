@@ -8,7 +8,7 @@ import {
   ComponentQueryRule,
   createComponentModel,
   WidgetSettings,
-} from '@telia-ace/widget-core-flamingo';
+} from '@telia-ace/widget-core';
 import {
   createStorageWriter,
   readStorage,

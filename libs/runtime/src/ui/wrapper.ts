@@ -6,10 +6,7 @@ import {
   Container,
   EventSubscriptionCancellation,
 } from '@webprovisions/platform';
-import {
-  ComponentPlatform,
-  WidgetRenderState,
-} from '@telia-ace/widget-core-flamingo';
+import { ComponentPlatform, WidgetRenderState } from '@telia-ace/widget-core';
 
 import { containerContext } from '../context/container.context';
 import {
@@ -119,7 +116,7 @@ export class WrapperComponent extends LitElement {
   breakpoints: string[] = [];
 
   @state()
-  breakpointsSet: boolean = false;
+  breakpointsSet = false;
 
   @state()
   entry: string | undefined;

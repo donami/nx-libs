@@ -4,7 +4,7 @@ import { property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { mapBranding } from './branding';
 
-type Symbol = {
+type SymbolType = {
   type: 'Uri' | 'Svg' | 'FontAwesome' | 'Text' | string;
   content: string;
 };
@@ -63,9 +63,7 @@ export class TriggerComponent extends LitElement {
         text-align: center;
         opacity: 1;
         transform: rotate(0deg) scale(1);
-        transition:
-          opacity 200ms ease-out,
-          transform 200ms ease-out;
+        transition: opacity 200ms ease-out, transform 200ms ease-out;
         color: var(--trigger-text-color, #fff);
       }
       .trigger-close {
@@ -86,16 +84,16 @@ export class TriggerComponent extends LitElement {
   ];
 
   @property({ attribute: false })
-  symbol?: Symbol;
+  symbol?: SymbolType;
 
   @property({ attribute: false })
   container?: Container;
 
   @state()
-  active: boolean = false;
+  active = false;
 
   @state()
-  loaded: boolean = false;
+  loaded = false;
 
   @state()
   icon: any;
@@ -123,9 +121,9 @@ export class TriggerComponent extends LitElement {
     }
   }
 
-  async _renderSymbol(symbol?: Symbol) {
+  async _renderSymbol(symbol?: SymbolType) {
     const importIcon = async (iconName: string) => {
-      const icon = await import('@teliads/icons').then((m) => {
+      const icon = await import('@teliads/icons').then((m: any) => {
         return m[iconName];
       });
       return icon;
