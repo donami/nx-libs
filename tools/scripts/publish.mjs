@@ -8,7 +8,7 @@
  */
 
 import { execSync } from 'child_process';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, copyFileSync } from 'fs';
 
 import devkit from '@nx/devkit';
 const { readCachedProjectGraph } = devkit;
@@ -55,6 +55,14 @@ try {
   console.error(`Could not determine which version to publish!`);
 }
 
+try {
+  const file = readFileSync(`.npmrc`).toString();
+  console.log('xxx', file);
+} catch (error) {
+  console.log('UNABLE TO READ FILE');
+  console.log('ERROR*,', error);
+}
+
 // console.log('vvv', version);
 process.chdir(outputPath);
 
@@ -79,5 +87,6 @@ try {
 }
 
 // Execute "npm publish" to publish
+
 execSync(`npm publish`);
 // execSync(`npm publish --access public --tag ${tag}`);
