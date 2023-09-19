@@ -1,5 +1,6 @@
 {
   "name": "lib-a",
+  "private": "false",
   "version": "0.0.1",
   "dependencies": {
     "lib-b": "*"

@@ -1,6 +1,7 @@
 {
   "name": "@telia-ace/widget-conversation-flamingo",
   "version": "0.0.1",
+  "private": "false",
   "dependencies": {
     "@telia-ace/widget-utilities": "^1.0.16",
     "lit": "^2.8.0",

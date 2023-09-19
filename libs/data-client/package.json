@@ -1,6 +1,7 @@
 {
   "name": "@telia-ace/knowledge-data-client-flamingo",
   "version": "0.0.1",
+  "private": "false",
   "dependencies": {
     "@webprovisions/platform": "^1.1.3",
     "@telia-ace/knowledge-serviceclient": "^1.0.31",
