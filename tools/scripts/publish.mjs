@@ -22,14 +22,8 @@ function invariant(condition, message) {
 
 // Executing publish script: node path/to/publish.mjs {name} --version {version} --tag {tag}
 // Default "tag" to "next" so we won't publish the "latest" tag by accident.
-const [, , name, version, tag = 'next'] = process.argv;
-
-// A simple SemVer validation to validate the version
-const validVersion = /^\d+\.\d+\.\d+(-\w+\.\d+)?/;
-invariant(
-  version && validVersion.test(version),
-  `No version provided or version did not match Semantic Versioning, expected: #.#.#-tag.# or #.#.#, got ${version}.`
-);
+// const [, , name, version, tag = 'next'] = process.argv;
+const [, , name] = process.argv;
 
 const graph = readCachedProjectGraph();
 const project = graph.nodes[name];
@@ -45,23 +39,41 @@ invariant(
   `Could not find "build.options.outputPath" of project "${name}". Is project.json configured  correctly?`
 );
 
-console.log('vvv', version);
+let newVersion = '';
+
+try {
+  const json = JSON.parse(readFileSync(`version.json`).toString());
+  newVersion = json.version;
+
+  // A simple SemVer validation to validate the version
+  const validVersion = /^\d+\.\d+\.\d+(-\w+\.\d+)?/;
+  invariant(
+    newVersion && validVersion.test(newVersion),
+    `No version provided or version did not match Semantic Versioning, expected: #.#.#-tag.# or #.#.#, got ${newVersion}.`
+  );
+} catch (error) {
+  console.error(`Could not determine which version to publish!`);
+}
+
+// console.log('vvv', version);
 process.chdir(outputPath);
 
 // Updating the version in "package.json" before publishing
 try {
   const json = JSON.parse(readFileSync(`package.json`).toString());
-  json.version = version;
+  json.version = newVersion;
 
   if (json.dependencies) {
     Object.entries(json.dependencies).forEach(([key, value]) => {
       if (value === '*') {
-        json.dependencies[key] = `^${version}`;
+        json.dependencies[key] = `^${newVersion}`;
       }
     });
   }
 
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
+
+  console.log(JSON.stringify(json, null, 2));
 } catch (e) {
   console.error(`Error reading package.json file from library build output.`);
 }

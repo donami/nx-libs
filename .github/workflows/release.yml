@@ -27,14 +27,13 @@ jobs:
       #   uses: nrwl/nx-set-shas@v2
       #   with:
       #     main-branch-name: ${{ github.base_ref }}
-
       - name: Install Dependencies
         run: pnpm install
 
-      # - run: |
-      #     npx nx affected --target lint --parallel 3
-      #     npx nx affected --target test --parallel 3 --ci --code-coverage
-      #     npx nx run-many --target build
+        # npx nx affected --target lint --parallel 3
+        # npx nx affected --target test --parallel 3 --ci --code-coverage
+      - run: |
+          npx nx run-many -t build
 
       - name: Configure Git
         run: |
@@ -44,6 +43,10 @@ jobs:
       - name: 'Bump version'
         run: node ./bump-version.mjs
         shell: bash
+
+      - name: 'Release'
+        run: |
+          npx nx run-many -t publish
 
       - name: 'Commit changes'
         run: |
